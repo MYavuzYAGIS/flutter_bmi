@@ -21,3 +21,6 @@ class BMICalculator extends StatelessWidget {
 }
 
 // this is the home page!. First time Alhamdulillah we started using different pages.
+
+/// WE WANT CARDS TO BE BUTTONS BUT WE CANNOT USE FLAT BUTTONS SINCE THEY EFFECT THE STYLING OF THE BUTTON.
+/// Instead, we will use GESTURE DETECTOR!
