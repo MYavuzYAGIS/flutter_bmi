@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
@@ -95,18 +96,29 @@ class _InputPageState extends State<InputPage> {
                           )
                         ],
                       ),
-                      Slider(
-                        min: kMinHeight,
-                        max: kMaxHeight,
-                        divisions: kSliderDivisions,
-                        activeColor: Color(0xFFEB1555),
-                        inactiveColor: Color(0xFFF8D8E98),
-                        value: height.toDouble(),
-                        onChanged: (double newValue) {
-                          setState(() {
-                            height = newValue.round();
-                          });
-                        },
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          inactiveTrackColor: Colors.white,
+                          thumbShape:
+                              RoundSliderThumbShape(enabledThumbRadius: 18.0),
+                          overlayShape:
+                              RoundSliderOverlayShape(overlayRadius: 30.0),
+                          thumbColor: Color(0xFFEB1555),
+                          activeTrackColor: Colors.white,
+                          overlayColor: Color(0x29EB1555),
+                        ),
+                        child: Slider(
+                          min: kMinHeight,
+                          max: kMaxHeight,
+                          divisions: kSliderDivisions,
+                          activeColor: Color(0xFFEB1555),
+                          value: height.toDouble(),
+                          onChanged: (double newValue) {
+                            setState(() {
+                              height = newValue.round();
+                            });
+                          },
+                        ),
                       )
                     ],
                   ),
