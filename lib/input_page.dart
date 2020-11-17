@@ -15,94 +15,127 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int height = 180;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Body Mass Index Calculator',
-              style: TextStyle(
-                color: Colors.blueGrey,
-                fontFamily: 'Open Sans',
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-              )),
-        ),
-        body: Column(children: <Widget>[
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: ReusableCard(
-                    onPress: () {
-                      setState(() {
-                        selectedGender = Gender.male;
-                      });
-                    },
-                    colour: selectedGender == Gender.male
-                        ? kActiveCardColor
-                        : kInactiveCardColor,
-                    cardChild: iconContent(
-                      icon: FontAwesomeIcons.mars,
-                      label: 'MALE',
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ReusableCard(
-                    onPress: () {
-                      setState(() {
-                        selectedGender = Gender.female;
-                      });
-                    },
-                    colour: selectedGender == Gender.female
-                        ? kActiveCardColor
-                        : kInactiveCardColor,
-                    cardChild: iconContent(
-                      icon: FontAwesomeIcons.venus,
-                      label: 'FEMALE',
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          title: Center(
+            child: Text('Body Mass Index Calculator',
+                style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontFamily: 'Open Sans',
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                )),
           ),
-          Expanded(
-            child: ReusableCard(
-              colour: kActiveCardColor,
-              cardChild: Column(
-                children: <Widget>[
-                  Text(
-                    'HEIGHT',
-                    style: TextStyle(),
-                  ),
-                ],
-              ),
-            ),
-          ), // Middle Slider
-          Expanded(
-              child: Row(
+        ),
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Expanded(
-                child: ReusableCard(
-                  colour: kActiveCardColor,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: ReusableCard(
+                        onPress: () {
+                          setState(() {
+                            selectedGender = Gender.male;
+                          });
+                        },
+                        colour: selectedGender == Gender.male
+                            ? kActiveCardColor
+                            : kInactiveCardColor,
+                        cardChild: iconContent(
+                          icon: FontAwesomeIcons.mars,
+                          label: 'MALE',
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: ReusableCard(
+                        onPress: () {
+                          setState(() {
+                            selectedGender = Gender.female;
+                          });
+                        },
+                        colour: selectedGender == Gender.female
+                            ? kActiveCardColor
+                            : kInactiveCardColor,
+                        cardChild: iconContent(
+                          icon: FontAwesomeIcons.venus,
+                          label: 'FEMALE',
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
                 child: ReusableCard(
                   colour: kActiveCardColor,
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'HEIGHT',
+                        style: kLabelTextStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        children: <Widget>[
+                          Text(
+                            height.toString(),
+                            style: kBoldText,
+                          ),
+                          Text(
+                            'cm',
+                            style: kLabelTextStyle,
+                          )
+                        ],
+                      ),
+                      Slider(
+                        min: kMinHeight,
+                        max: kMaxHeight,
+                        divisions: kSliderDivisions,
+                        activeColor: Color(0xFFEB1555),
+                        inactiveColor: Color(0xFFF8D8E98),
+                        value: height.toDouble(),
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        },
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          )), // Bottom Twins
-          //Below is the bottom row.
-          //  width : double.infinity ekrean boyutu ne olurssa olsun tamamini kapla demek.
-          Container(
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(top: 11.0),
-            width: double.infinity,
-            height: kBottomContainerHeight,
-          ), // bottom red bar
-        ])
+              ), // Middle Slider
+              Expanded(
+                  child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: ReusableCard(
+                      colour: kActiveCardColor,
+                    ),
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      colour: kActiveCardColor,
+                    ),
+                  ),
+                ],
+              )), // Bottom Twins
+              //Below is the bottom row.
+              //  width : double.infinity ekrean boyutu ne olurssa olsun tamamini kapla demek.
+              Container(
+                color: kBottomContainerColor,
+                margin: EdgeInsets.only(top: 11.0),
+                width: double.infinity,
+                height: kBottomContainerHeight,
+              ), // bottom red bar
+            ])
         // buttona theme vermek icin onu evvela theme widgeti ile wrap ettik
         //sonra data bekler bu widget, ona bir data verdik.
         // data the ThemeData Bekler. artik Themedata nin ici CSS gibi. istedigin
