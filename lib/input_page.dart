@@ -33,45 +33,29 @@ class _InputPageState extends State<InputPage> {
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(15.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: Color(0xFF1D1E32),
-                      ),
+                    child: ReusableCard(
+                      colour: Color(0xFF1D1E32),
                     ),
                   )
                 ],
               ),
             ),
             Expanded(
-              child: Container(
-                margin: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Color(0xFF1D1E32),
-                ),
+              child: ReusableCard(
+                colour: Color(0xFF1D1E32),
               ),
             ),
             Expanded(
                 child: Row(
               children: <Widget>[
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Color(0xFF1D1E32),
-                    ),
+                  child: ReusableCard(
+                    colour: Color(0xFF1D1E32),
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(15.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Color(0xFF1D1E32),
-                    ),
+                  child: ReusableCard(
+                    colour: Color(0xFF1D1E32),
                   ),
                 ),
               ],
@@ -87,3 +71,26 @@ class _InputPageState extends State<InputPage> {
 }
 
 // Starting Creating the Cards on the UI
+class ReusableCard extends StatelessWidget {
+  ReusableCard({@required this.colour});
+  Color colour;
+
+  //widget olustururken 6 tane card icin 6 blok container kod yazdik. buna gerek olmasin diye de
+  // extract widgete basarak otomatik olarak classa donusturduk.
+  // bu blok kodu ureten flutter oldu.
+
+  //constructor olusturduk. bu sekilde color prpopertysini manipulate edebiliyoruz.
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: colour,
+      ),
+    );
+  }
+}
+
+//  Color(0xFF1D1E32)
