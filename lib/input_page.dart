@@ -39,8 +39,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGender == Gender.male
-                        ? kactiveCardColor
-                        : kinactiveCardColor,
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
                     cardChild: iconContent(
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
@@ -55,8 +55,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGender == Gender.female
-                        ? kactiveCardColor
-                        : kinactiveCardColor,
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
                     cardChild: iconContent(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
@@ -68,7 +68,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              colour: kactiveCardColor,
+              colour: kActiveCardColor,
               cardChild: Column(
                 children: <Widget>[
                   Text(
@@ -84,12 +84,12 @@ class _InputPageState extends State<InputPage> {
             children: <Widget>[
               Expanded(
                 child: ReusableCard(
-                  colour: kactiveCardColor,
+                  colour: kActiveCardColor,
                 ),
               ),
               Expanded(
                 child: ReusableCard(
-                  colour: kactiveCardColor,
+                  colour: kActiveCardColor,
                 ),
               ),
             ],
@@ -97,10 +97,10 @@ class _InputPageState extends State<InputPage> {
           //Below is the bottom row.
           //  width : double.infinity ekrean boyutu ne olurssa olsun tamamini kapla demek.
           Container(
-            color: kbottomContainerColor,
+            color: kBottomContainerColor,
             margin: EdgeInsets.only(top: 11.0),
             width: double.infinity,
-            height: kbottomContainerHeight,
+            height: kBottomContainerHeight,
           ), // bottom red bar
         ])
         // buttona theme vermek icin onu evvela theme widgeti ile wrap ettik

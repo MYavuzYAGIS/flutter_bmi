@@ -12,14 +12,14 @@ class iconContent extends StatelessWidget {
       children: <Widget>[
         Icon(
           icon,
-          size: iconSize,
+          size: kIconSize,
         ),
         SizedBox(
-          height: sizedBoxHeight,
+          height: kSizedBoxHeight,
         ),
         Text(
           label,
-          style: klabelTextStyle,
+          style: kLabelTextStyle,
         )
       ],
     );
