@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
+import 'constants.dart';
 
 // Learning Enums
 
 enum Gender { male, female }
-
-const bottomContainerHeight = 80.0;
-const activeCardColor = Color(0xFF1D1E32);
-const inactiveCardColor = Color(0xFF111328);
-const bottomContainerColor = Color(0xFFEB1555);
 
 class InputPage extends StatefulWidget {
   @override
@@ -43,8 +39,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGender == Gender.male
-                        ? activeCardColor
-                        : inactiveCardColor,
+                        ? kactiveCardColor
+                        : kinactiveCardColor,
                     cardChild: iconContent(
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
@@ -59,8 +55,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGender == Gender.female
-                        ? activeCardColor
-                        : inactiveCardColor,
+                        ? kactiveCardColor
+                        : kinactiveCardColor,
                     cardChild: iconContent(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
@@ -72,31 +68,39 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              colour: activeCardColor,
+              colour: kactiveCardColor,
+              cardChild: Column(
+                children: <Widget>[
+                  Text(
+                    'HEIGHT',
+                    style: TextStyle(),
+                  ),
+                ],
+              ),
             ),
-          ),
+          ), // Middle Slider
           Expanded(
               child: Row(
             children: <Widget>[
               Expanded(
                 child: ReusableCard(
-                  colour: activeCardColor,
+                  colour: kactiveCardColor,
                 ),
               ),
               Expanded(
                 child: ReusableCard(
-                  colour: activeCardColor,
+                  colour: kactiveCardColor,
                 ),
               ),
             ],
-          )),
+          )), // Bottom Twins
           //Below is the bottom row.
           //  width : double.infinity ekrean boyutu ne olurssa olsun tamamini kapla demek.
           Container(
-            color: bottomContainerColor,
+            color: kbottomContainerColor,
             margin: EdgeInsets.only(top: 11.0),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kbottomContainerHeight,
           ), // bottom red bar
         ])
         // buttona theme vermek icin onu evvela theme widgeti ile wrap ettik
