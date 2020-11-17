@@ -3,6 +3,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 
+// Learning Enums
+
+enum Gender { male, female }
+
 const bottomContainerHeight = 80.0;
 const activeCardColor = Color(0xFF1D1E32);
 const inactiveCardColor = Color(0xFF111328);
@@ -16,10 +20,10 @@ class InputPage extends StatefulWidget {
 Color maleCardColour = inactiveCardColor;
 Color femaleCardColour = inactiveCardColor;
 
-//1 mele 2 female
-void updateColor(int gender) {
+//1 male 2 female
+void updateColor(Gender selectedGender) {
   //male pressed
-  if (gender == 1) {
+  if (selectedGender == Gender.male) {
     if (maleCardColour == inactiveCardColor) {
       maleCardColour = activeCardColor;
       femaleCardColour = inactiveCardColor;
@@ -27,7 +31,7 @@ void updateColor(int gender) {
       maleCardColour = inactiveCardColor;
       femaleCardColour = activeCardColor;
     }
-  } else if (gender == 2) {
+  } else if (selectedGender == Gender.female) {
     if (femaleCardColour == inactiveCardColor) {
       femaleCardColour = activeCardColor;
       maleCardColour = inactiveCardColor;
@@ -43,7 +47,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Calculate BMI',
+          title: Text('Body Mass Index Calculator',
               style: TextStyle(
                 color: Colors.blueGrey,
                 fontFamily: 'Open Sans',
@@ -59,7 +63,7 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColor(1);
+                        updateColor(Gender.male);
                       });
                     },
                     child: ReusableCard(
@@ -75,7 +79,7 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColor(2);
+                        updateColor(Gender.female);
                       });
                     },
                     child: ReusableCard(
