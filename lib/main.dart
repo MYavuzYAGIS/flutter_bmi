@@ -18,3 +18,5 @@ class BMICalculator extends StatelessWidget {
     );
   }
 }
+
+// this is the home page!. First time Alhamdulillah we started using different pages.
