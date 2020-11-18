@@ -1,11 +1,12 @@
+import 'package:bmi_calculator/screens/result_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'constants.dart';
-import 'customButton.dart';
-import 'result_page.dart';
+import '../components/icon_content.dart';
+import '../components/reusable_card.dart';
+import '../constants.dart';
+import '../components/customButton.dart';
+import '../components/bottom_button.dart';
 
 // Learning Enums
 
@@ -211,17 +212,16 @@ class _InputPageState extends State<InputPage> {
             )), // Bottom Twins
             //Below is the bottom row.
             //  width : double.infinity ekrean boyutu ne olurssa olsun tamamini kapla demek.
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, '/result');
-              },
-              child: Container(
-                  color: kBottomContainerColor,
-                  margin: EdgeInsets.only(top: 11.0),
-                  width: double.infinity,
-                  height: kBottomContainerHeight,
-                  child: Text('Calculate')),
-            ),
+            BottomButton(
+                buttonTitle: 'CALCULATE',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ResultsPage(),
+                    ),
+                  );
+                }),
           ]), // bottom red bar
     );
     // buttona theme vermek icin onu evvela theme widgeti ile wrap ettik

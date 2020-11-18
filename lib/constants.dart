@@ -27,3 +27,23 @@ const kBottomContainerColor = Color(0xFFEB1555);
 const kMinHeight = 100.0;
 const kMaxHeight = 220.0;
 const kSliderDivisions = 240;
+
+const kLargeButtonStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.bold,
+);
+
+// Second PAge Title Style
+const kTitleTextStyle =
+    TextStyle(fontSize: 45, fontWeight: FontWeight.bold, color: Colors.white);
+
+//displayed resuly
+const kResultTextStyle = TextStyle(
+    fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF24D876));
+
+// BMI numeric result
+const kBMITextStyle =
+    TextStyle(fontSize: 100, fontWeight: FontWeight.bold, color: Colors.white);
+// Interpretation
+
+const kInterpret = TextStyle(color: Colors.white, fontSize: 20);
