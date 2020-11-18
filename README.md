@@ -24,3 +24,7 @@ I am going to make a Body Mass Index Calculator inspired by the beautiful design
 - Learn about composition vs. inheritance and the Flutter way of creating custom UI.
 - Understand the difference between const and final in Dart and when to use each.
 
+
+
+![front](/images/BMI_front.png)
+![result](/images/BMI_second.png)
