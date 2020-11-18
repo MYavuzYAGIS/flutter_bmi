@@ -27,4 +27,4 @@ I am going to make a Body Mass Index Calculator inspired by the beautiful design
 
 
 ![front](/images/BMI_front.png)
-![result](/images/BMI_second.png)
+![result](/images/bmi_second.png)
