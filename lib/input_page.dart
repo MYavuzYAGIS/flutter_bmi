@@ -5,6 +5,7 @@ import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
 import 'customButton.dart';
+import 'result_page.dart';
 
 // Learning Enums
 
@@ -23,205 +24,210 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text('Body Mass Index Calculator',
-                style: TextStyle(
-                  color: Colors.blueGrey,
-                  fontFamily: 'Open Sans',
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                )),
-          ),
+      appBar: AppBar(
+        title: Center(
+          child: Text('Body Mass Index Calculator',
+              style: TextStyle(
+                color: Colors.blueGrey,
+                fontFamily: 'Open Sans',
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+              )),
         ),
-        body: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Expanded(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: ReusableCard(
-                        onPress: () {
-                          setState(() {
-                            selectedGender = Gender.male;
-                          });
-                        },
-                        colour: selectedGender == Gender.male
-                            ? kActiveCardColor
-                            : kInactiveCardColor,
-                        cardChild: iconContent(
-                          icon: FontAwesomeIcons.mars,
-                          label: 'MALE',
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: ReusableCard(
-                        onPress: () {
-                          setState(() {
-                            selectedGender = Gender.female;
-                          });
-                        },
-                        colour: selectedGender == Gender.female
-                            ? kActiveCardColor
-                            : kInactiveCardColor,
-                        cardChild: iconContent(
-                          icon: FontAwesomeIcons.venus,
-                          label: 'FEMALE',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: ReusableCard(
-                  colour: kActiveCardColor,
-                  cardChild: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'HEIGHT',
-                        style: kLabelTextStyle,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.baseline,
-                        children: <Widget>[
-                          Text(
-                            height.toString(),
-                            style: kBoldText,
-                          ),
-                          Text(
-                            'cm',
-                            style: kLabelTextStyle,
-                          )
-                        ],
-                      ),
-                      SliderTheme(
-                        data: SliderTheme.of(context).copyWith(
-                          inactiveTrackColor: Colors.white,
-                          thumbShape:
-                              RoundSliderThumbShape(enabledThumbRadius: 18.0),
-                          overlayShape:
-                              RoundSliderOverlayShape(overlayRadius: 30.0),
-                          thumbColor: Color(0xFFEB1555),
-                          activeTrackColor: Colors.white,
-                          overlayColor: Color(0x29EB1555),
-                        ),
-                        child: Slider(
-                          min: kMinHeight,
-                          max: kMaxHeight,
-                          divisions: kSliderDivisions,
-                          activeColor: Color(0xFFEB1555),
-                          value: height.toDouble(),
-                          onChanged: (double newValue) {
-                            setState(() {
-                              height = newValue.round();
-                            });
-                          },
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ), // Middle Slider
-              Expanded(
-                  child: Row(
+      ),
+      body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              child: Row(
                 children: <Widget>[
                   Expanded(
                     child: ReusableCard(
-                      colour: kActiveCardColor,
-                      cardChild: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text('WEIGHT', style: kLabelTextStyle),
-                          Text(
-                            weight.toString(),
-                            style: kBoldText,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              RoundIconButton(
-                                icon: FontAwesomeIcons.plus,
-                                onPressed: () {
-                                  setState(() {
-                                    weight = weight + 1;
-                                    print(weight);
-                                  });
-                                },
-                              ),
-                              RoundIconButton(
-                                icon: FontAwesomeIcons.minus,
-                                onPressed: () {
-                                  setState(() {
-                                    weight = weight - 1;
-                                  });
-                                },
-                              ),
-                            ],
-                          )
-                        ],
+                      onPress: () {
+                        setState(() {
+                          selectedGender = Gender.male;
+                        });
+                      },
+                      colour: selectedGender == Gender.male
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
+                      cardChild: iconContent(
+                        icon: FontAwesomeIcons.mars,
+                        label: 'MALE',
                       ),
                     ),
                   ),
                   Expanded(
                     child: ReusableCard(
-                      colour: kActiveCardColor,
-                      cardChild: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            'AGE',
-                            style: kLabelTextStyle,
-                          ),
-                          Text(
-                            age.toString(),
-                            style: kBoldText,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              RoundIconButton(
-                                icon: FontAwesomeIcons.plus,
-                                onPressed: () {
-                                  setState(() {
-                                    age = age + 1;
-                                  });
-                                },
-                              ),
-                              RoundIconButton(
-                                icon: FontAwesomeIcons.minus,
-                                onPressed: () {
-                                  setState(() {
-                                    age = age - 1;
-                                  });
-                                },
-                              ),
-                            ],
-                          )
-                        ],
+                      onPress: () {
+                        setState(() {
+                          selectedGender = Gender.female;
+                        });
+                      },
+                      colour: selectedGender == Gender.female
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
+                      cardChild: iconContent(
+                        icon: FontAwesomeIcons.venus,
+                        label: 'FEMALE',
                       ),
                     ),
                   ),
                 ],
-              )), // Bottom Twins
-              //Below is the bottom row.
-              //  width : double.infinity ekrean boyutu ne olurssa olsun tamamini kapla demek.
-              Container(
-                color: kBottomContainerColor,
-                margin: EdgeInsets.only(top: 11.0),
-                width: double.infinity,
-                height: kBottomContainerHeight,
-              ), // bottom red bar
-            ])
-        // buttona theme vermek icin onu evvela theme widgeti ile wrap ettik
-        //sonra data bekler bu widget, ona bir data verdik.
-        // data the ThemeData Bekler. artik Themedata nin ici CSS gibi. istedigin
-        //gibi degisiklik yapabilirisn. ister Material design kullan isgter custom color.
-        );
+              ),
+            ),
+            Expanded(
+              child: ReusableCard(
+                colour: kActiveCardColor,
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'HEIGHT',
+                      style: kLabelTextStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      children: <Widget>[
+                        Text(
+                          height.toString(),
+                          style: kBoldText,
+                        ),
+                        Text(
+                          'cm',
+                          style: kLabelTextStyle,
+                        )
+                      ],
+                    ),
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        inactiveTrackColor: Colors.white,
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 18.0),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 30.0),
+                        thumbColor: Color(0xFFEB1555),
+                        activeTrackColor: Colors.white,
+                        overlayColor: Color(0x29EB1555),
+                      ),
+                      child: Slider(
+                        min: kMinHeight,
+                        max: kMaxHeight,
+                        divisions: kSliderDivisions,
+                        activeColor: Color(0xFFEB1555),
+                        value: height.toDouble(),
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ), // Middle Slider
+            Expanded(
+                child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('WEIGHT', style: kLabelTextStyle),
+                        Text(
+                          weight.toString(),
+                          style: kBoldText,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  weight = weight - 1;
+                                });
+                              },
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  weight = weight + 1;
+                                  print(weight);
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'AGE',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kBoldText,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  age = age - 1;
+                                });
+                              },
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  age = age + 1;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            )), // Bottom Twins
+            //Below is the bottom row.
+            //  width : double.infinity ekrean boyutu ne olurssa olsun tamamini kapla demek.
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/result');
+              },
+              child: Container(
+                  color: kBottomContainerColor,
+                  margin: EdgeInsets.only(top: 11.0),
+                  width: double.infinity,
+                  height: kBottomContainerHeight,
+                  child: Text('Calculate')),
+            ),
+          ]), // bottom red bar
+    );
+    // buttona theme vermek icin onu evvela theme widgeti ile wrap ettik
+    //sonra data bekler bu widget, ona bir data verdik.
+    // data the ThemeData Bekler. artik Themedata nin ici CSS gibi. istedigin
+    //gibi degisiklik yapabilirisn. ister Material design kullan isgter custom color.
   }
 }
 
