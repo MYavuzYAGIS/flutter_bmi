@@ -4,6 +4,15 @@ import '../components/reusable_card.dart';
 import '../components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage(
+      {@required this.bmiResult,
+      @required this.interpret,
+      @required this.resultText});
+
+  final String bmiResult;
+  final String resultText;
+  final String interpret;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,10 +40,10 @@ class ResultsPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('Normal', style: kResultTextStyle),
-                      Text('18.3', style: kBMITextStyle),
+                      Text(resultText, style: kResultTextStyle),
+                      Text(bmiResult, style: kBMITextStyle),
                       Text(
-                        'BMI Is MASSIVE!',
+                        interpret,
                         style: kInterpret,
                         textAlign: TextAlign.center,
                       ),
